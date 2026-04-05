@@ -28,9 +28,9 @@
 </tr>
 <tr>
 <td>Fuel Cost/km</td>
-<td>₹1</td>
-<td>₹7</td>
-<td>₹6</td>
+<td>₹1–2</td>
+<td>₹6–8</td>
+<td>₹5–7</td>
 </tr>
 <tr>
 <td>Maintenance</td>
@@ -47,20 +47,34 @@
 </table>
 </section>
 
-<!-- 🔥 CALCULATOR SECTION -->
+<!-- 🔥 CALCULATOR -->
 <section class="calculator">
-<h2>💰 Cost Calculator</h2>
+<h2>💰 Smart Cost Calculator</h2>
 
-<input type="number" id="distance" placeholder="Enter distance (km)">
+<input type="number" id="distance" placeholder="Distance (km)">
+
+<h3>⚡ EV</h3>
+<input type="number" id="evCostInput" placeholder="Cost per km (₹)" value="1.5">
+
+<h3>⛽ Petrol</h3>
+<input type="number" id="petrolPrice" placeholder="Price per litre (₹)" value="100">
+<input type="number" id="petrolMileage" placeholder="Mileage (km/l)" value="15">
+
+<h3>🛢 Diesel</h3>
+<input type="number" id="dieselPrice" placeholder="Price per litre (₹)" value="90">
+<input type="number" id="dieselMileage" placeholder="Mileage (km/l)" value="20">
+
 <button onclick="calculateCost()">Calculate</button>
 
 <div class="result">
-<p>⚡ EV Cost: <span id="evCost">0</span></p>
-<p>⛽ Petrol Cost: <span id="petrolCost">0</span></p>
-<p>🛢 Diesel Cost: <span id="dieselCost">0</span></p>
+<p>⚡ EV Cost: <span id="evCost">₹ 0</span></p>
+<p>⛽ Petrol Cost: <span id="petrolCost">₹ 0</span></p>
+<p>🛢 Diesel Cost: <span id="dieselCost">₹ 0</span></p>
 </div>
 </section>
 
-<script src="script.js"></script>
+<!-- IMPORTANT: cache fix -->
+<script src="script.js?v=5"></script>
+
 </body>
 </html>
