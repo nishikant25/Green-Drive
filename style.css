@@ -1,11 +1,4 @@
 body {
-font-family: 'Segoe UI';
-margin: 0;
-background: #0f172a;
-color: white;
-}
-
-.navbar {
 display: flex;
 justify-content: space-between;
 padding: 15px 30px;
