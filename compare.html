@@ -27,10 +27,10 @@
 <th>Diesel</th>
 </tr>
 <tr>
-<td>Fuel Cost</td>
-<td>₹1/km</td>
-<td>₹7/km</td>
-<td>₹6/km</td>
+<td>Fuel Cost/km</td>
+<td>₹1</td>
+<td>₹7</td>
+<td>₹6</td>
 </tr>
 <tr>
 <td>Maintenance</td>
@@ -47,5 +47,20 @@
 </table>
 </section>
 
+<!-- 🔥 CALCULATOR SECTION -->
+<section class="calculator">
+<h2>💰 Cost Calculator</h2>
+
+<input type="number" id="distance" placeholder="Enter distance (km)">
+<button onclick="calculateCost()">Calculate</button>
+
+<div class="result">
+<p>⚡ EV Cost: <span id="evCost">0</span></p>
+<p>⛽ Petrol Cost: <span id="petrolCost">0</span></p>
+<p>🛢 Diesel Cost: <span id="dieselCost">0</span></p>
+</div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
