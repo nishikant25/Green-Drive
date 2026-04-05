@@ -1,31 +1,45 @@
-function scrollToSection(){
-document.getElementById("features").scrollIntoView({behavior:"smooth"});
+function scrollToSection() {
+    const el = document.getElementById("features");
+    if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+    }
 }
 
-// 🔥 CALCULATOR FUNCTION
 function calculateCost() {
     let distance = parseFloat(document.getElementById("distance").value);
 
     if (isNaN(distance) || distance <= 0) {
-        alert("Please enter a valid distance");
+        alert("Please enter valid distance");
         return;
     }
 
-    let evCostPerKm = 1.5;
+    // EV
+    let evCostPerKm = parseFloat(document.getElementById("evCostInput").value);
 
-    let petrolPrice = 100;
-    let petrolMileage = 15;
+    // Petrol
+    let petrolPrice = parseFloat(document.getElementById("petrolPrice").value);
+    let petrolMileage = parseFloat(document.getElementById("petrolMileage").value);
 
-    let dieselPrice = 90;
-    let dieselMileage = 20;
+    // Diesel
+    let dieselPrice = parseFloat(document.getElementById("dieselPrice").value);
+    let dieselMileage = parseFloat(document.getElementById("dieselMileage").value);
+
+    if (
+        isNaN(evCostPerKm) ||
+        isNaN(petrolPrice) || isNaN(petrolMileage) ||
+        isNaN(dieselPrice) || isNaN(dieselMileage)
+    ) {
+        alert("Please fill all fields correctly");
+        return;
+    }
 
     let ev = distance * evCostPerKm;
     let petrol = (distance / petrolMileage) * petrolPrice;
     let diesel = (distance / dieselMileage) * dieselPrice;
 
-    document.getElementById("evCost").innerText = "₹ " + ev.toFixed(2);
-    document.getElementById("petrolCost").innerText = "₹ " + petrol.toFixed(2);
-    document.getElementById("dieselCost").innerText = "₹ " + diesel.toFixed(2);
+    document.getElementById("evCost").innerText = "₹ " + ev.toLocaleString("en-IN");
+    document.getElementById("petrolCost").innerText = "₹ " + petrol.toLocaleString("en-IN");
+    document.getElementById("dieselCost").innerText = "₹ " + diesel.toLocaleString("en-IN");
 }
 
-console.log("Premium EV Site Loaded 🚀");
+console.log("🔥 Smart EV Calculator Loaded");
