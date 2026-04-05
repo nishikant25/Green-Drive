@@ -20,7 +20,7 @@ background: linear-gradient(135deg,#22c55e,#0ea5e9);
 .hero button {
 padding: 10px 20px;
 border: none;
-background: black;
+background: light blue;
 color: white;
 cursor: pointer;
 }
