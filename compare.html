@@ -81,7 +81,64 @@
 </section>
 
 <!-- IMPORTANT: cache fix -->
-<script src="script.js?v=5"></script>
+<script src="script.js?v=5">
+  <script>
+function predictCost() {
+  let km = document.getElementById("km5").value;
+
+  if (km === "") {
+    alert("Enter distance!");
+    return;
+  }
+
+  let evRate = 1.5;
+  let petrolRate = 7;
+  let dieselRate = 6;
+
+  let totalEV = 0;
+  let totalPetrol = 0;
+  let totalDiesel = 0;
+
+  for (let year = 1; year <= 5; year++) {
+    petrolRate *= 1.08;
+    dieselRate *= 1.07;
+
+    let yearlyEV = km * evRate * 365;
+    let yearlyPetrol = km * petrolRate * 365;
+    let yearlyDiesel = km * dieselRate * 365;
+
+    totalEV += yearlyEV;
+    totalPetrol += yearlyPetrol;
+    totalDiesel += yearlyDiesel;
+  }
+
+  let savePetrol = totalPetrol - totalEV;
+  let saveDiesel = totalDiesel - totalEV;
+
+  document.getElementById("result5").innerHTML = `
+    <div class="card">
+      <h3>⚡ EV (5 Years)</h3>
+      <p>₹${Math.round(totalEV)}</p>
+    </div>
+
+    <div class="card">
+      <h3>⛽ Petrol (5 Years)</h3>
+      <p>₹${Math.round(totalPetrol)}</p>
+    </div>
+
+    <div class="card">
+      <h3>🚛 Diesel (5 Years)</h3>
+      <p>₹${Math.round(totalDiesel)}</p>
+    </div>
+
+    <div class="card">
+      <h3>💰 Savings</h3>
+      <p>vs Petrol: ₹${Math.round(savePetrol)}</p>
+      <p>vs Diesel: ₹${Math.round(saveDiesel)}</p>
+    </div>
+  `;
+}
+</script>
 
 </body>
 </html>
