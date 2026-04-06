@@ -78,6 +78,13 @@
 <button onclick="predictCost()">Predict 5-Year Cost</button>
 
 <div id="result5" class="cards"></div>
+  <h2>🌍 Pollution Impact Calculator</h2>
+
+<input type="number" id="kmPollution" placeholder="Enter km per day">
+<br>
+<button onclick="calculatePollution()">Check Impact</button>
+
+<div id="pollutionResult" class="cards"></div>
 </section>
 
 <!-- IMPORTANT: cache fix -->
@@ -139,6 +146,52 @@ function predictCost() {
       <h3>💰 Savings</h3>
       <p>vs Petrol: ₹${Math.round(savePetrol)}</p>
       <p>vs Diesel: ₹${Math.round(saveDiesel)}</p>
+    </div>
+  `;
+}
+</script>
+  <script>
+function calculatePollution() {
+  let km = document.getElementById("kmPollution").value;
+
+  if (!km || km <= 0) {
+    alert("Enter valid km");
+    return;
+  }
+
+  km = Number(km);
+
+  // CO2 emission per km (approx)
+  let petrolCO2 = 0.12; // kg/km
+  let dieselCO2 = 0.10; // kg/km
+  let evCO2 = 0.02; // indirect electricity emission
+
+  // yearly pollution
+  let petrolYear = km * petrolCO2 * 365;
+  let dieselYear = km * dieselCO2 * 365;
+  let evYear = km * evCO2 * 365;
+
+  // trees needed (1 tree absorbs ~21 kg CO2/year)
+  let petrolTrees = petrolYear / 21;
+  let dieselTrees = dieselYear / 21;
+
+  document.getElementById("pollutionResult").innerHTML = `
+    <div class="card">
+      <h3>⛽ Petrol Pollution</h3>
+      <p>${petrolYear.toFixed(1)} kg CO₂/year</p>
+      <p>🌳 Trees needed: ${Math.round(petrolTrees)}</p>
+    </div>
+
+    <div class="card">
+      <h3>🚛 Diesel Pollution</h3>
+      <p>${dieselYear.toFixed(1)} kg CO₂/year</p>
+      <p>🌳 Trees needed: ${Math.round(dieselTrees)}</p>
+    </div>
+
+    <div class="card">
+      <h3>⚡ EV Pollution</h3>
+      <p>${evYear.toFixed(1)} kg CO₂/year</p>
+      <p>🌱 Much lower impact</p>
     </div>
   `;
 }
